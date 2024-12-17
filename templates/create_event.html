@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Evento</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Criar Novo Evento</h1>
+        
+        <form method="POST" action="/create_event">
+            <input type="text" name="name" placeholder="Nome do evento" required class="form-control mx-auto">
+            <textarea name="description" placeholder="Descrição do evento" required class="form-control mx-auto" rows="4"></textarea>
+        
+            <input type="submit" value="Criar Evento" class="btn btn-primary mt-2">
+        </form>
+        
+    </div>
+</body>
+</html>

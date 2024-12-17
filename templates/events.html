@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Eventos</h1>
+        
+        {% for event in events %}
+    <li class="list-group-item">
+        <h5>{{ event.name }}</h5>
+        <p>{{ event.description }}</p>
+        
+        <h6>Participantes:</h6>
+        <ul>
+            {% for participant in event_participants[event.id] %}
+                <li>{{ participant.username }}</li>
+            {% endfor %}
+        </ul>
+
+        <form method="POST" action="{{ url_for('join_event', event_id=event.id) }}">
+            <input type="submit" value="Inscrever-se" class="btn btn-primary">
+        </form>
+    </li>
+{% endfor %}
+        <div class="text-center mt-4">
+            <a href="{{ url_for('create_event') }}" class="btn btn-success">Criar Novo Evento</a>
+        </div>
+    </div>
+</body>
+</html>

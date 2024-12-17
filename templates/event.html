@@ -1,0 +1,29 @@
+<html><head>
+
+</head>
+<body>
+<h1>{{ event.title }}</h1>
+<p>{{ event.description }}</p>
+<p><strong>Data:</strong> {{ event.date }}</p>
+
+<h2>Inscrições</h2>
+{% if event.attendees %}
+    <ul>
+        {% for attendee in event.attendees %}
+            <li>{{ attendee.username }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Nenhuma inscrição ainda.</p>
+{% endif %}
+
+<!-- Formulário para inscrição -->
+{% if not user_is_registered %}
+    <form method="POST" action="{{ url_for('register_event', event_id=event.id) }}">
+        <input type="submit" value="Inscrever-se" class="btn btn-primary">
+    </form>
+{% else %}
+    <p>Você já está inscrito neste evento.</p>
+{% endif %}
+</body>
+</html>
